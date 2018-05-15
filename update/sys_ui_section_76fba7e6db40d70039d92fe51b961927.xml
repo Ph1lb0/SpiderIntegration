@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<record_update>
+    <sys_ui_section caption="Costs" section_id="76fba7e6db40d70039d92fe51b961927" sys_domain="global" table="x_bragr_si_spider_catalog_item" version="3" view="sc_cat_item_designer">
+        <sys_ui_element action="INSERT_OR_UPDATE">
+            <element>.begin_split</element>
+            <position>0</position>
+            <sys_created_by>TGrobe</sys_created_by>
+            <sys_created_on>2018-02-06 10:00:49</sys_created_on>
+            <sys_id>32fba7e6db40d70039d92fe51b961928</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_ui_formatter/>
+            <sys_ui_section caption="Costs" display_value="Costs" name="x_bragr_si_spider_catalog_item" sys_domain="global" view="f5a795fceb3211003623666cd206fe19">76fba7e6db40d70039d92fe51b961927</sys_ui_section>
+            <sys_updated_by>TGrobe</sys_updated_by>
+            <sys_updated_on>2018-02-06 10:00:49</sys_updated_on>
+            <sys_user/>
+            <type>.begin_split</type>
+        </sys_ui_element>
+        <sys_ui_element action="INSERT_OR_UPDATE">
+            <element>price</element>
+            <position>1</position>
+            <sys_created_by>TGrobe</sys_created_by>
+            <sys_created_on>2018-02-06 10:00:49</sys_created_on>
+            <sys_id>b2fba7e6db40d70039d92fe51b961928</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_ui_formatter/>
+            <sys_ui_section caption="Costs" display_value="Costs" name="x_bragr_si_spider_catalog_item" sys_domain="global" view="f5a795fceb3211003623666cd206fe19">76fba7e6db40d70039d92fe51b961927</sys_ui_section>
+            <sys_updated_by>TGrobe</sys_updated_by>
+            <sys_updated_on>2018-02-06 10:00:49</sys_updated_on>
+            <sys_user/>
+            <type/>
+        </sys_ui_element>
+        <sys_ui_element action="INSERT_OR_UPDATE">
+            <element>.split</element>
+            <position>2</position>
+            <sys_created_by>TGrobe</sys_created_by>
+            <sys_created_on>2018-02-06 10:00:49</sys_created_on>
+            <sys_id>36fba7e6db40d70039d92fe51b961928</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_ui_formatter/>
+            <sys_ui_section caption="Costs" display_value="Costs" name="x_bragr_si_spider_catalog_item" sys_domain="global" view="f5a795fceb3211003623666cd206fe19">76fba7e6db40d70039d92fe51b961927</sys_ui_section>
+            <sys_updated_by>TGrobe</sys_updated_by>
+            <sys_updated_on>2018-02-06 10:00:49</sys_updated_on>
+            <sys_user/>
+            <type>.split</type>
+        </sys_ui_element>
+        <sys_ui_element action="INSERT_OR_UPDATE">
+            <element>recurring_price</element>
+            <position>3</position>
+            <sys_created_by>TGrobe</sys_created_by>
+            <sys_created_on>2018-02-06 10:00:49</sys_created_on>
+            <sys_id>b6fba7e6db40d70039d92fe51b961928</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_ui_formatter/>
+            <sys_ui_section caption="Costs" display_value="Costs" name="x_bragr_si_spider_catalog_item" sys_domain="global" view="f5a795fceb3211003623666cd206fe19">76fba7e6db40d70039d92fe51b961927</sys_ui_section>
+            <sys_updated_by>TGrobe</sys_updated_by>
+            <sys_updated_on>2018-02-06 10:00:49</sys_updated_on>
+            <sys_user/>
+            <type/>
+        </sys_ui_element>
+        <sys_ui_element action="INSERT_OR_UPDATE">
+            <element>recurring_frequency</element>
+            <position>4</position>
+            <sys_created_by>TGrobe</sys_created_by>
+            <sys_created_on>2018-02-06 10:00:49</sys_created_on>
+            <sys_id>3afba7e6db40d70039d92fe51b961928</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_ui_formatter/>
+            <sys_ui_section caption="Costs" display_value="Costs" name="x_bragr_si_spider_catalog_item" sys_domain="global" view="f5a795fceb3211003623666cd206fe19">76fba7e6db40d70039d92fe51b961927</sys_ui_section>
+            <sys_updated_by>TGrobe</sys_updated_by>
+            <sys_updated_on>2018-02-06 10:00:49</sys_updated_on>
+            <sys_user/>
+            <type/>
+        </sys_ui_element>
+        <sys_ui_element action="INSERT_OR_UPDATE">
+            <element>.end_split</element>
+            <position>5</position>
+            <sys_created_by>TGrobe</sys_created_by>
+            <sys_created_on>2018-02-06 10:00:49</sys_created_on>
+            <sys_id>bafba7e6db40d70039d92fe51b961928</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_ui_formatter/>
+            <sys_ui_section caption="Costs" display_value="Costs" name="x_bragr_si_spider_catalog_item" sys_domain="global" view="f5a795fceb3211003623666cd206fe19">76fba7e6db40d70039d92fe51b961927</sys_ui_section>
+            <sys_updated_by>TGrobe</sys_updated_by>
+            <sys_updated_on>2018-02-06 10:00:49</sys_updated_on>
+            <sys_user/>
+            <type>.end_split</type>
+        </sys_ui_element>
+        <sys_ui_section action="INSERT_OR_UPDATE">
+            <caption>Costs</caption>
+            <header>false</header>
+            <name>x_bragr_si_spider_catalog_item</name>
+            <roles/>
+            <sys_class_name>sys_ui_section</sys_class_name>
+            <sys_created_by>TGrobe</sys_created_by>
+            <sys_created_on>2018-02-06 10:00:49</sys_created_on>
+            <sys_customer_update>false</sys_customer_update>
+            <sys_domain>global</sys_domain>
+            <sys_domain_path>/</sys_domain_path>
+            <sys_id>76fba7e6db40d70039d92fe51b961927</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_name>Costs</sys_name>
+            <sys_overrides/>
+            <sys_package display_value="Spider Integration" source="x_bragr_si">5b9d57e6db00d70039d92fe51b9619d1</sys_package>
+            <sys_policy/>
+            <sys_replace_on_upgrade>false</sys_replace_on_upgrade>
+            <sys_scope display_value="Spider Integration">5b9d57e6db00d70039d92fe51b9619d1</sys_scope>
+            <sys_update_name>sys_ui_section_76fba7e6db40d70039d92fe51b961927</sys_update_name>
+            <sys_updated_by>TGrobe</sys_updated_by>
+            <sys_updated_on>2018-02-06 10:00:49</sys_updated_on>
+            <sys_user/>
+            <title>false</title>
+            <view display_value="Item Designer" name="sc_cat_item_designer">f5a795fceb3211003623666cd206fe19</view>
+            <view_name/>
+        </sys_ui_section>
+    </sys_ui_section>
+</record_update>

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<record_update table="sys_rest_message_fn">
+    <sys_rest_message_fn action="INSERT_OR_UPDATE">
+        <authentication_type>inherit_from_parent</authentication_type>
+        <basic_auth_password/>
+        <basic_auth_profile/>
+        <basic_auth_user/>
+        <content/>
+        <function_name>Get Spider Employee</function_name>
+        <http_method>get</http_method>
+        <lock>false</lock>
+        <oauth2_profile/>
+        <protocol_name/>
+        <qualified_name>Spider Remote API [ Get Spider Employee ]</qualified_name>
+        <rest_endpoint>https://${server}/SpiderAPI/v1/${mandator}/search/Employee?condition=AND%7cEmailAddress%7clike%7c${EMail}</rest_endpoint>
+        <rest_message display_value="Spider Remote API">94ec632adb40d70039d92fe51b961918</rest_message>
+        <sys_class_name>sys_rest_message_fn</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2018-05-03 08:13:09</sys_created_on>
+        <sys_customer_update>false</sys_customer_update>
+        <sys_id>dbb98a52db795700ff5113141b96193f</sys_id>
+        <sys_mod_count>4</sys_mod_count>
+        <sys_name>Get Spider Employee</sys_name>
+        <sys_package display_value="Spider Integration" source="x_bragr_si">5b9d57e6db00d70039d92fe51b9619d1</sys_package>
+        <sys_policy/>
+        <sys_replace_on_upgrade>false</sys_replace_on_upgrade>
+        <sys_scope display_value="Spider Integration">5b9d57e6db00d70039d92fe51b9619d1</sys_scope>
+        <sys_update_name>sys_rest_message_fn_dbb98a52db795700ff5113141b96193f</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2018-05-03 11:03:26</sys_updated_on>
+        <use_basic_auth>false</use_basic_auth>
+        <use_mid_server/>
+        <use_mutual_auth>false</use_mutual_auth>
+    </sys_rest_message_fn>
+</record_update>

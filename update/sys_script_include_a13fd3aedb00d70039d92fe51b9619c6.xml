@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<record_update table="sys_script_include">
+    <sys_script_include action="INSERT_OR_UPDATE">
+        <access>package_private</access>
+        <active>true</active>
+        <api_name>x_bragr_si.CatalogHelper</api_name>
+        <client_callable>false</client_callable>
+        <description>re-usable script include to allow cross scope access to the sc_req_item's variable array values. these are not directly accessible from a scoped app (last checked release: Kingston).&#13;
+		</description>
+        <name>CatalogHelper</name>
+        <script><![CDATA[var CatalogHelper = Class.create();
+CatalogHelper.prototype = {
+	initialize: function() {	
+	},
+	
+	_getUserVariableValue: function(ritm_id) {
+		gs.debug("UserVariable: " + ritm_id);
+		var gr = new GlideRecord('sc_item_option_mtom');
+		gr.addQuery('request_item', ritm_id);
+		gr.addQuery('sc_item_option.item_option_new.name', 'user');
+		gr.setLimit(1);
+		gr.query();
+		gs.debug("GR Debug " + gr);	
+		
+		if (gr.next()) {
+			gs.debug("sc_item_option_mtom ID: " + gr.sys_id);
+			gs.debug("sc_req_item ID: " + gr.request_item.sys_id);
+			gs.debug("sc_item_option.item_option_new : " + gr.sc_item_option.item_option_new.getDisplayValue());
+			gs.debug("sc_item_option.value : " + gr.sc_item_option.value);
+			
+			return gr.sc_item_option.value;
+		} else throw "User Variable not found for requested_item id: "+ritm_id;
+	},
+	
+	getUserRecord: function(ritm_id) {
+		var gr = new GlideRecord('sys_user');
+		if (gr.get(this._getUserVariableValue(ritm_id))) {
+			gs.debug("Resolved variable to a user record with the name: "+gr.name);
+			//gs.debug("Resolved variable to a user record with the Email: "+gr.mail);
+			gs.debug("Resolved variable to a user record with the Email: "+gr.email);
+			return gr;
+		} else throw "User for given variable value not found";	
+	},
+	
+	
+	setApproval:function(ritm_id){
+		
+		//sc_req_item
+		var gr = new GlideRecord('sc_req_item');
+		gr.addQuery('request_item', ritm_id);
+		gr.setLimit(1);
+		gr.query();
+		
+		if (gr.next()) {
+			
+			gr.request_item.approval = 'approved';
+			
+			gr.update("Set Approved");
+		}else{
+			gs.debug("No Values to Set Apporval");
+		}
+		
+	},
+	
+	type: 'CatalogHelper'
+};]]></script>
+        <sys_class_name>sys_script_include</sys_class_name>
+        <sys_created_by>TGrobe</sys_created_by>
+        <sys_created_on>2018-02-06 09:05:46</sys_created_on>
+        <sys_customer_update>false</sys_customer_update>
+        <sys_id>a13fd3aedb00d70039d92fe51b9619c6</sys_id>
+        <sys_mod_count>32</sys_mod_count>
+        <sys_name>CatalogHelper</sys_name>
+        <sys_package display_value="Spider Integration" source="x_bragr_si">5b9d57e6db00d70039d92fe51b9619d1</sys_package>
+        <sys_policy>read</sys_policy>
+        <sys_replace_on_upgrade>false</sys_replace_on_upgrade>
+        <sys_scope display_value="Spider Integration">5b9d57e6db00d70039d92fe51b9619d1</sys_scope>
+        <sys_update_name>sys_script_include_a13fd3aedb00d70039d92fe51b9619c6</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2018-05-09 10:14:15</sys_updated_on>
+    </sys_script_include>
+</record_update>

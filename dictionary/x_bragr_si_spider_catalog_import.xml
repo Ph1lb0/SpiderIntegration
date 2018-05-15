@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<database>
+    <element extends="sys_import_set_row" label="Spider Catalog Import" max_length="40" name="x_bragr_si_spider_catalog_import" sizeclass="7570" type="collection">
+        <element label="active" max_length="255" name="active" type="string_full_utf8"/>
+        <element label="fullName" max_length="255" name="fullname" type="string_full_utf8"/>
+        <element label="id" max_length="255" name="id" type="string_full_utf8"/>
+        <element label="invName" max_length="255" name="invname" type="string_full_utf8"/>
+        <element label="manufacturer" max_length="255" name="manufacturer" type="string_full_utf8"/>
+        <element label="name" max_length="255" name="name" type="string_full_utf8"/>
+    </element>
+</database>

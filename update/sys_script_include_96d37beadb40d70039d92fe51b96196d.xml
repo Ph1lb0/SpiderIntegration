@@ -1,0 +1,209 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<record_update table="sys_script_include">
+    <sys_script_include action="INSERT_OR_UPDATE">
+        <access>public</access>
+        <active>true</active>
+        <api_name>x_bragr_si.ConfigHelper</api_name>
+        <client_callable>false</client_callable>
+        <description>this script include collects relevant application properties into one easily accessible object. it also allows for validation of the integration configuration.</description>
+        <name>ConfigHelper</name>
+        <script><![CDATA[var ConfigHelper = Class.create();
+ConfigHelper.prototype = {
+  initialize: function() {
+    //retreives all properties
+    try {
+      this._c = {
+        remote_api: {
+          server: gs.getProperty('x_bragr_si.remote_api.server'),
+          mandator: gs.getProperty('x_bragr_si.remote_api.mandator'),
+          use_mid_server: gs.getProperty('x_bragr_si.remote_api.use_mid_server'),
+          mid_server_name: gs.getProperty('x_bragr_si.remote_api.mid_server_name')
+        },
+        catalogs: gs.getProperty('x_bragr_si.catalogs'),
+        default_category: gs.getProperty('x_bragr_si.default_category'),
+        user_varset: gs.getProperty('x_bragr_si.user_varset'),
+        default_workflow: gs.getProperty('x_bragr_si.default_workflow')
+      };
+      gs.debug("Spider Integration config object: " + JSON.stringify(this._c));
+    } catch (e) {
+      gs.error(e);
+    }
+  },
+
+  getConfig: function() {
+    //returns the config object
+
+    return this._c;
+
+  },
+
+  validateConfig: function(config) {
+    //validates the configuration and returns health scores and messages for all 4 configuration domains
+    var result = {
+      remote_api: _validateRemoteAPI(config),
+      table_api: _validateImportAPI(config),
+      catalog: _validateCatalogAPI(config),
+      mid_server: _validateMID(config)
+    };
+  },
+
+  _validateRemoteAPI: function(config) {
+    var o = {};
+    o.issues = 0;
+    if (config.remote_api.server) {
+
+      //ToDo: Checks for:
+      //test connection
+      //test authentication
+      //fetch token
+      //token/user have access?
+      //Free Text idea: Still not working? - check if correct mandator number is set for your environment
+	  //Effort: >= 1 day
+		
+		
+    } else {
+      o.issues++;
+      o.messages.push({
+        weight: 1,
+        text: 'No Spider Server configured.'
+      });
+    }
+    if (o.issues > 0) {
+      o.messages.push({
+        weight: 2,
+        text: 'RemoteAPI configuration check failed.'
+      });
+    } else {
+      o.messages.push({
+        weight: 0,
+        text: 'RemoteAPI configuration check passed.'
+      });
+    }
+    return o;
+  },
+
+  _validateImportAPI: function(config) {
+    var o = {};
+    o.issues = 0;
+
+    //ToDo: Checks for:
+    //test authentication against ImportAPI
+    //insert dummy data
+    //check for catalog item
+    //delete dummy data
+	//Effort: >= 0.5 days
+	  
+    if (o.issues > 0) {
+      o.messages.push({
+        weight: 2,
+        text: 'ImportAPI configuration check failed.'
+      });
+    } else {
+      o.messages.push({
+        weight: 0,
+        text: 'ImportAPI configuration check passed.'
+      });
+    }
+    return o;
+  },
+
+  _validateCatalogAPI: function(config) {
+
+    var o = {};
+    o.issues = 0;
+
+    //ToDo: Checks for:
+    //Resolving configured catalogs
+    //Resolving configured categories
+    //Resolving configured variable sets
+	//Resolving configured workflow
+	//Effort: >= 2 hours
+   
+
+    if (o.issues > 0) {
+      o.messages.push({
+        weight: 2,
+        text: 'CatalogAPI configuration check failed.'
+      });
+    } else {
+      o.messages.push({
+        weight: 0,
+        text: 'CatalogAPI configuration check passed.'
+      });
+    }
+    return o;
+
+  },
+
+  _validateMID: function(config) {
+    //checks if the mid server config is valid and ready to use
+    //all issues are counted and a list of informative messages and their weight (usable for coloring) added to the result
+    var o = {};
+    o.issues = 0;
+    //only run if "use mid server" property is set to true
+    if (config.remote_api.use_mid_server) {
+      var gr = new GlideRecord('ecc_agent');
+      //check if configured name leads to a valid MID Server record
+      if (gr.get('name', config.remote_api.mid_server_name)) {
+        //check mid server state field
+        if (gr.status != 'Up') {
+          o.issues++;
+          o.messages.push({
+            weight: 1,
+            text: 'MID Server ' + config.remote_api.mid_server_name + ' seems to be down.'
+          });
+        }
+        //check mid server validation field
+        if (gr.validated != 'Yes') {
+          o.issues++;
+          o.messages.push({
+            weight: 1,
+            text: 'MID Server ' + config.remote_api.mid_server_name + ' is not validated.'
+          });
+        }
+      } else {
+        o.issues++;
+        o.messages.push({
+          weight: 1,
+          text: 'No MID Server ' + config.remote_api.mid_server_name + ' found for the configured name.'
+        });
+      }
+    } else {
+      o.messages.push({
+        weight: 0,
+        text: 'MID Server ' + config.remote_api.mid_server_name + ' configuration check skipped (direct connection configured)'
+      });
+    }
+    if (o.issues > 0) {
+      o.messages.push({
+        weight: 2,
+        text: 'MID Server configuration check failed.'
+      });
+    } else {
+      o.messages.push({
+        weight: 0,
+        text: 'MID Server configuration check passed.'
+      });
+    }
+    return o;
+  },
+
+  type: 'ConfigHelper'
+};
+]]></script>
+        <sys_class_name>sys_script_include</sys_class_name>
+        <sys_created_by>TGrobe</sys_created_by>
+        <sys_created_on>2018-02-06 10:45:58</sys_created_on>
+        <sys_customer_update>false</sys_customer_update>
+        <sys_id>96d37beadb40d70039d92fe51b96196d</sys_id>
+        <sys_mod_count>15</sys_mod_count>
+        <sys_name>ConfigHelper</sys_name>
+        <sys_package display_value="Spider Integration" source="x_bragr_si">5b9d57e6db00d70039d92fe51b9619d1</sys_package>
+        <sys_policy>read</sys_policy>
+        <sys_replace_on_upgrade>false</sys_replace_on_upgrade>
+        <sys_scope display_value="Spider Integration">5b9d57e6db00d70039d92fe51b9619d1</sys_scope>
+        <sys_update_name>sys_script_include_96d37beadb40d70039d92fe51b96196d</sys_update_name>
+        <sys_updated_by>TGrobe</sys_updated_by>
+        <sys_updated_on>2018-03-09 16:18:10</sys_updated_on>
+    </sys_script_include>
+</record_update>

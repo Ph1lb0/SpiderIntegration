@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<record_update table="sys_ui_view">
+    <sys_ui_view action="INSERT_OR_UPDATE">
+        <group/>
+        <hidden>false</hidden>
+        <name>sys_popup,spider</name>
+        <roles/>
+        <sys_class_name>sys_ui_view</sys_class_name>
+        <sys_created_by>TGrobe</sys_created_by>
+        <sys_created_on>2018-03-09 16:25:43</sys_created_on>
+        <sys_customer_update>false</sys_customer_update>
+        <sys_id>d35de4b0dbfc1b4039d92fe51b9619b7</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>Sys_popup,spider</sys_name>
+        <sys_package display_value="Spider Integration" source="x_bragr_si">5b9d57e6db00d70039d92fe51b9619d1</sys_package>
+        <sys_policy/>
+        <sys_replace_on_upgrade>false</sys_replace_on_upgrade>
+        <sys_scope display_value="Spider Integration">5b9d57e6db00d70039d92fe51b9619d1</sys_scope>
+        <sys_update_name>sys_ui_view_d35de4b0dbfc1b4039d92fe51b9619b7</sys_update_name>
+        <sys_updated_by>TGrobe</sys_updated_by>
+        <sys_updated_on>2018-03-09 16:25:43</sys_updated_on>
+        <title>Sys_popup,spider</title>
+        <user/>
+    </sys_ui_view>
+</record_update>

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<database>
+    <element attributes="update_synch=true" extends="sc_cat_item" label="Spider Catalog Item" max_length="40" name="x_bragr_si_spider_catalog_item" type="collection">
+        <element label="Correlation ID" max_length="255" name="correlation_id" type="string_full_utf8"/>
+        <index name="index">
+            <element name="correlation_id"/>
+        </index>
+    </element>
+</database>

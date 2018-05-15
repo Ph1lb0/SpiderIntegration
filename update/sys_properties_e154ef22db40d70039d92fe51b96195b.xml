@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<record_update table="sys_properties">
+    <sys_properties action="INSERT_OR_UPDATE">
+        <choices/>
+        <description>Sys_id of the variable set used for creating catalog items for software with the license metric "user based".</description>
+        <ignore_cache>false</ignore_cache>
+        <is_private>false</is_private>
+        <name>x_bragr_si.user_varset</name>
+        <read_roles/>
+        <suffix>user_varset</suffix>
+        <sys_class_name>sys_properties</sys_class_name>
+        <sys_created_by>TGrobe</sys_created_by>
+        <sys_created_on>2018-02-06 09:28:44</sys_created_on>
+        <sys_customer_update>false</sys_customer_update>
+        <sys_id>e154ef22db40d70039d92fe51b96195b</sys_id>
+        <sys_mod_count>1</sys_mod_count>
+        <sys_name>x_bragr_si.user_varset</sys_name>
+        <sys_package display_value="Spider Integration" source="x_bragr_si">5b9d57e6db00d70039d92fe51b9619d1</sys_package>
+        <sys_policy/>
+        <sys_replace_on_upgrade>false</sys_replace_on_upgrade>
+        <sys_scope display_value="Spider Integration">5b9d57e6db00d70039d92fe51b9619d1</sys_scope>
+        <sys_update_name>sys_properties_e154ef22db40d70039d92fe51b96195b</sys_update_name>
+        <sys_updated_by>TGrobe</sys_updated_by>
+        <sys_updated_on>2018-02-06 14:58:10</sys_updated_on>
+        <type>string</type>
+        <value>e47fe8f2db04d70039d92fe51b961958</value>
+        <write_roles/>
+    </sys_properties>
+    <sys_translated_text action="delete_multiple" query="documentkey=e154ef22db40d70039d92fe51b96195b"/>
+</record_update>

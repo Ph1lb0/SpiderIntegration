@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<record_update table="sys_properties">
+    <sys_properties action="INSERT_OR_UPDATE">
+        <choices/>
+        <description>FQDN of the Spider Remote API Server (e.g. spider.acme.local)</description>
+        <ignore_cache>false</ignore_cache>
+        <is_private>true</is_private>
+        <name>x_bragr_si.remote_api.server</name>
+        <read_roles/>
+        <suffix>remote_api.server</suffix>
+        <sys_class_name>sys_properties</sys_class_name>
+        <sys_created_by>TGrobe</sys_created_by>
+        <sys_created_on>2018-02-06 10:07:20</sys_created_on>
+        <sys_customer_update>false</sys_customer_update>
+        <sys_id>7c5d6fe6db40d70039d92fe51b961948</sys_id>
+        <sys_mod_count>8</sys_mod_count>
+        <sys_name>x_bragr_si.remote_api.server</sys_name>
+        <sys_package display_value="Spider Integration" source="x_bragr_si">5b9d57e6db00d70039d92fe51b9619d1</sys_package>
+        <sys_policy/>
+        <sys_replace_on_upgrade>false</sys_replace_on_upgrade>
+        <sys_scope display_value="Spider Integration">5b9d57e6db00d70039d92fe51b9619d1</sys_scope>
+        <sys_update_name>sys_properties_7c5d6fe6db40d70039d92fe51b961948</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2018-04-26 09:39:22</sys_updated_on>
+        <type>string</type>
+        <value>alpha-test.brainwaregroup.com</value>
+        <write_roles/>
+    </sys_properties>
+    <sys_translated_text action="delete_multiple" query="documentkey=7c5d6fe6db40d70039d92fe51b961948"/>
+</record_update>

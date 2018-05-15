@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<record_update table="sys_script_include">
+    <sys_script_include action="INSERT_OR_UPDATE">
+        <access>package_private</access>
+        <active>true</active>
+        <api_name>x_bragr_si.ImportHelper</api_name>
+        <client_callable>false</client_callable>
+        <description/>
+        <name>ImportHelper</name>
+        <script><![CDATA[var ImportHelper = Class.create();
+ImportHelper.prototype = {
+	initialize: function() {
+	},
+	
+	
+	processData: function(sw) {
+		
+		//Adds a software object to the import table for working ETL handling;
+		
+		var sw_obj = JSON.parse(sw);
+		var request = new sn_ws.RESTMessageV2('ServiceNow Spider Import API','Process Data');
+		request.setStringParameter('servlet_uri', gs.getProperty('glide.servlet.uri'));
+		
+		//map the software object properties to the import set table fields
+		for (var key in sw_obj.result) {
+			var o = {
+				"invname": sw_obj.result[key].invName,
+				"name": sw_obj.result[key].name,
+				"manufacturer": sw_obj.result[key].manufacturer,
+				"active": sw_obj.result[key].active,
+				"fullname": sw_obj.result[key].fullName,
+				"id": sw_obj.result[key].id
+			};
+			
+			request.setRequestBody(JSON.stringify(o));
+			gs.debug(request.getRequestBody());
+			var response = request.execute();
+			gs.debug(response.getBody());
+		}
+	},
+	
+	
+	createImportSet: function(sw) {
+		gs.debug(sw.substring(0,500)+"__TRUNCATED__");
+		
+		var sw_obj = JSON.parse(sw);
+		
+		if (!sw_obj.count || sw_obj.count != 0) {
+			gs.info(sw_obj.count+" Software Records received from Spider API");
+			
+			//Create New Import Set
+			var s = new GlideRecord('sys_import_set');
+			s.newRecord();
+			s.mode = 'synchronous';
+			s.table_name = 'x_bragr_si_spider_catalog_import';
+			s.state = 'loading';
+			s.insert();
+			
+			//Create One Import Row for each software record from the JSON response
+			
+			for (var key in sw_obj.result) {
+				gs.debug("Software Object ready for import set processing: "+sw_obj.result[key].name);
+				var r = new GlideRecord('x_bragr_si_spider_catalog_import');
+				r.newRecord();
+				r.sys_import_set = "71dfdcb2dbc0d70039d92fe51b96193b";
+				r.invname = sw_obj.result[key].invName;
+				r.name = sw_obj.result[key].name;
+				r.manufacturer = sw_obj.result[key].manufacturer;
+				r.active = sw_obj.result[key].active;
+				r.fullname = sw_obj.result[key].fullName;
+				r.id = 	sw_obj.result[key].id;
+				r.insert();
+			}
+			
+			//s.state = 'processed';
+			//s.update();
+			
+		} else gs.info('No software records received');
+		
+		
+		
+	},
+	
+	type: 'ImportHelper'
+};]]></script>
+        <sys_class_name>sys_script_include</sys_class_name>
+        <sys_created_by>TGrobe</sys_created_by>
+        <sys_created_on>2018-02-06 12:45:18</sys_created_on>
+        <sys_customer_update>false</sys_customer_update>
+        <sys_id>da1198badb80d70039d92fe51b9619d0</sys_id>
+        <sys_mod_count>39</sys_mod_count>
+        <sys_name>ImportHelper</sys_name>
+        <sys_package display_value="Spider Integration" source="x_bragr_si">5b9d57e6db00d70039d92fe51b9619d1</sys_package>
+        <sys_policy>read</sys_policy>
+        <sys_replace_on_upgrade>false</sys_replace_on_upgrade>
+        <sys_scope display_value="Spider Integration">5b9d57e6db00d70039d92fe51b9619d1</sys_scope>
+        <sys_update_name>sys_script_include_da1198badb80d70039d92fe51b9619d0</sys_update_name>
+        <sys_updated_by>TGrobe</sys_updated_by>
+        <sys_updated_on>2018-03-09 16:31:41</sys_updated_on>
+    </sys_script_include>
+</record_update>

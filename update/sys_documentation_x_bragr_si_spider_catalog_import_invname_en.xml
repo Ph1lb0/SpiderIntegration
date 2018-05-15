@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<record_update>
+    <sys_documentation element="invname" label="invName" language="en" table="x_bragr_si_spider_catalog_import">
+        <sys_documentation action="INSERT_OR_UPDATE">
+            <element>invname</element>
+            <help/>
+            <hint/>
+            <label>invName</label>
+            <language>en</language>
+            <name>x_bragr_si_spider_catalog_import</name>
+            <plural>invNames</plural>
+            <sys_class_name>sys_documentation</sys_class_name>
+            <sys_created_by>TGrobe</sys_created_by>
+            <sys_created_on>2018-02-06 13:26:24</sys_created_on>
+            <sys_customer_update>false</sys_customer_update>
+            <sys_id>560b5032dbc0d70039d92fe51b9619e3</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_name>invName</sys_name>
+            <sys_package display_value="Spider Integration" source="x_bragr_si">5b9d57e6db00d70039d92fe51b9619d1</sys_package>
+            <sys_policy/>
+            <sys_replace_on_upgrade>false</sys_replace_on_upgrade>
+            <sys_scope display_value="Spider Integration">5b9d57e6db00d70039d92fe51b9619d1</sys_scope>
+            <sys_update_name>sys_documentation_x_bragr_si_spider_catalog_import_invname_en</sys_update_name>
+            <sys_updated_by>TGrobe</sys_updated_by>
+            <sys_updated_on>2018-02-06 13:26:24</sys_updated_on>
+            <url/>
+            <url_target/>
+        </sys_documentation>
+    </sys_documentation>
+</record_update>

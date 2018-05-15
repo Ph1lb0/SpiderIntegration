@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<record_update table="sys_script_include">
+    <sys_script_include action="INSERT_OR_UPDATE">
+        <access>package_private</access>
+        <active>true</active>
+        <api_name>x_bragr_si.RemoteAPIHelper </api_name>
+        <client_callable>false</client_callable>
+        <description/>
+        <name>RemoteAPIHelper </name>
+        <script><![CDATA[var RemoteAPIHelper = Class.create();
+RemoteAPIHelper.prototype = {
+	initialize: function() {
+		this._config = new ConfigHelper().getConfig();
+	},
+	
+	_getToken: function() {
+		try {
+			var req = new sn_ws.RESTMessageV2('Spider Remote API','Request API Token');
+			if (this._config.use_mid_server) {
+				req.setMIDServer(this._config.mid_server_name);
+			}
+			req.setStringParameter('server', this._config.remote_api.server);
+			var res = req.execute();
+			gs.debug('The Granted API TOKEN is: '+res.getHeaders().Token);
+			
+			return res.getHeaders().Token;
+		} catch (e) {
+			gs.error(e);
+		}
+	},
+	
+	createSoftwareAssignment: function(sw_id, employee_id,token) {
+		var result = {
+			state: "",
+			code: "",
+			message: ""
+		};
+		
+		try {
+			var req = new sn_ws.RESTMessageV2('Spider Remote API','Create Software Assignment');
+			if (this._config.use_mid_server) {
+				req.setMIDServer(this._config.mid_server_name);
+			}
+			req.setStringParameter('server', this._config.remote_api.server);
+			req.setStringParameter('mandator', this._config.remote_api.mandator);
+			req.setStringParameter('sw_id', sw_id);
+			req.setStringParameter('employee_id', employee_id);
+			req.setStringParameter('token', token);
+			var res = req.execute();
+			gs.debug("getSoftware REST Response Body: "+res.getBody());
+			var o = JSON.parse(res.getBody());
+			if (o.id == null) {
+				result.state = 'failed';
+				result.code = 500;
+				result.message = o.notifications[0].message;
+			} else {
+				result.state = 'success';
+				result.code = 200;
+				result.message = 'License Assignment Successful';
+			}
+			return result;
+			
+		} catch (e) {
+			gs.error(e);
+			result.state = 'failed';
+			result.code = 500;
+			result.message = 'Internal Exeception'+e;
+			return result;
+		}
+	},
+	
+	getSoftware: function() {
+		try {
+			var req = new sn_ws.RESTMessageV2('Spider Remote API','Search for Software');
+			//use mid server if configured
+			if (this._config.use_mid_server) {
+				req.setMIDServer(this._config.mid_server_name);
+			}
+			req.setStringParameter('server', this._config.remote_api.server);
+			req.setStringParameter('mandator', this._config.remote_api.mandator);
+			req.setStringParameter('token', this._getToken());
+			var res = req.execute();
+			return res.getBody();
+		} catch (e) {
+			gs.error(e);
+		}
+	},
+	
+	getEmployee: function(email,token) {
+		try {
+			var req = new sn_ws.RESTMessageV2('Spider Remote API','Get Spider Employee');
+			//use mid server if configured
+			if (this._config.use_mid_server) {
+				req.setMIDServer(this._config.mid_server_name);
+			}
+			
+			req.setStringParameter('server', this._config.remote_api.server);
+			req.setStringParameter('mandator', this._config.remote_api.mandator);
+			req.setStringParameter('token', token);
+			req.setStringParameter('EMail',email);
+			
+			var res = req.execute();
+			//gs.debug("EmployeeMessage: "+res);
+			gs.debug('Body: '+res.getBody());
+			var emp_obj = JSON.parse(res.getBody());
+			
+			//gs.debug('Emp_ID: '+emp_obj.ID);
+			// 			gs.debug("Parsed JSON: "+emp_obj.result);
+			var id= -1;
+			if(emp_obj == null){
+				gs.error("EmployeeObjects IS NULL");
+			}else{
+				for (var key in emp_obj.result) {
+				id = emp_obj.result[key].id;
+				gs.debug('Objects:' +id);
+				}
+			}	
+			return id;
+		} catch (e) {
+			gs.error(e);
+		}
+	},
+	
+	type: 'RemoteAPIHelper'
+};]]></script>
+        <sys_class_name>sys_script_include</sys_class_name>
+        <sys_created_by>TGrobe</sys_created_by>
+        <sys_created_on>2018-02-06 10:30:39</sys_created_on>
+        <sys_customer_update>false</sys_customer_update>
+        <sys_id>69a23feadb40d70039d92fe51b9619a5</sys_id>
+        <sys_mod_count>57</sys_mod_count>
+        <sys_name>RemoteAPIHelper </sys_name>
+        <sys_package display_value="Spider Integration" source="x_bragr_si">5b9d57e6db00d70039d92fe51b9619d1</sys_package>
+        <sys_policy>read</sys_policy>
+        <sys_replace_on_upgrade>false</sys_replace_on_upgrade>
+        <sys_scope display_value="Spider Integration">5b9d57e6db00d70039d92fe51b9619d1</sys_scope>
+        <sys_update_name>sys_script_include_69a23feadb40d70039d92fe51b9619a5</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2018-05-09 09:14:32</sys_updated_on>
+    </sys_script_include>
+</record_update>
