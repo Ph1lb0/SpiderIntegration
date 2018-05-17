@@ -12,16 +12,16 @@
         <advanced>false</advanced>
         <change_fields>false</change_fields>
         <client_callable>false</client_callable>
-        <collection>sc_req_item</collection>
+        <collection>sc_request</collection>
         <condition/>
         <description/>
         <execute_function>false</execute_function>
-        <filter_condition table="sc_req_item">approval=requested^EQ<item endquery="false" field="approval" goto="false" newquery="false" operator="=" or="false" value="requested"/>
+        <filter_condition table="sc_request">request_state=in_process^EQ<item endquery="false" field="request_state" goto="false" newquery="false" operator="=" or="false" value="in_process"/>
             <item endquery="true" field="" goto="false" newquery="false" operator="=" or="false" value=""/>
         </filter_condition>
         <is_rest>false</is_rest>
         <message/>
-        <name>BR_Add Approval</name>
+        <name>BR_SetRequest_State</name>
         <order>100</order>
         <priority>100</priority>
         <rest_method/>
@@ -37,23 +37,23 @@
 })(current, previous);]]></script>
         <sys_class_name>sys_script</sys_class_name>
         <sys_created_by>admin</sys_created_by>
-        <sys_created_on>2018-05-09 10:27:55</sys_created_on>
+        <sys_created_on>2018-05-16 13:59:29</sys_created_on>
         <sys_customer_update>false</sys_customer_update>
         <sys_domain>global</sys_domain>
         <sys_domain_path>/</sys_domain_path>
-        <sys_id>5f93ed14db8e5b00ff5113141b9619d1</sys_id>
-        <sys_mod_count>3</sys_mod_count>
-        <sys_name>BR_Add Approval</sys_name>
+        <sys_id>02b7d6e6db0a1340b103e7b51b9619ae</sys_id>
+        <sys_mod_count>1</sys_mod_count>
+        <sys_name>BR_SetRequest_State</sys_name>
         <sys_overrides/>
         <sys_package display_value="Spider Integration" source="x_bragr_si">5b9d57e6db00d70039d92fe51b9619d1</sys_package>
         <sys_policy/>
         <sys_replace_on_upgrade>false</sys_replace_on_upgrade>
         <sys_scope display_value="Spider Integration">5b9d57e6db00d70039d92fe51b9619d1</sys_scope>
-        <sys_update_name>sys_script_5f93ed14db8e5b00ff5113141b9619d1</sys_update_name>
+        <sys_update_name>sys_script_02b7d6e6db0a1340b103e7b51b9619ae</sys_update_name>
         <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2018-05-17 07:36:18</sys_updated_on>
-        <template>approval=approved^EQ</template>
+        <sys_updated_on>2018-05-17 07:36:09</sys_updated_on>
+        <template>request_state=closed_complete^EQ</template>
         <when>before</when>
     </sys_script>
-    <sys_translated_text action="delete_multiple" query="documentkey=5f93ed14db8e5b00ff5113141b9619d1"/>
+    <sys_translated_text action="delete_multiple" query="documentkey=02b7d6e6db0a1340b103e7b51b9619ae"/>
 </record_update>
